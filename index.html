@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sizzular Barebone</title>
+    <meta name="description"
+          content="Sizzle (jQuery Selector) with AngularJS Barebone Starter Code for any kind of website">
+    <meta name="author" content="huydotnet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/sizzle/2.0.0/sizzle.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+        var app = angular.module("sizzularDemo", []);
+        app.controller("sizzularDemoController", ["$scope", function ($scope) {
+            $scope.sizzular = "Welcome to Sizzular";
+            $scope.starter = {};
+            $scope.starter.code = "Sizzle jQuery Selector + AngularJS = Sizzular";
+            $scope.starter.description = "(coolest thing ever on the planet!)";
+
+            $scope.clickGoAway = function() {
+                var i = Sizzle("#fadeable")[0];
+                i.classList.add("fadeOut");
+            };
+        }]);
+
+    </script>
+</head>
+<style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Fredoka+One|Ubuntu);
+
+    * {
+        font-family: "Fredoka One", "Ubuntu", sans-serif;
+        color: #707070;
+        font-weight: normal;
+        font-size: 1.2em;
+    }
+
+    body {
+        background: #ebebeb;
+        text-align: center;
+    }
+
+    h1 {
+        color: #777e8c;
+        font-size: 3.60em;
+        margin-top: 1.20em;
+    }
+
+    i {
+        color: #909090;
+        font-size: 0.8em;
+    }
+
+    .css-animation {
+        -webkit-transition:0.4s linear all;
+        -moz-transition:0.4s linear all;
+        -o-transition:0.4s linear all;
+        transition:0.4s linear all;
+    }
+
+    .css-animation.fadeOut {
+        opacity: 0;
+    }
+
+    .css-animation.fadeIn {
+        opacity: 1;
+    }
+</style>
+<body ng-app="sizzularDemo" ng-controller="sizzularDemoController">
+<h1>{{sizzular}}</h1>
+
+<p>{{starter.code}}</p>
+<i id="fadeable" class="css-animation" ng-click="clickGoAway()">{{starter.description}} <- Click me</i>
+</body>
+</html>
